@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import { Register } from '../../components/auth/Register'
 import { Login } from '../../components/auth/Login'
 
-export const AuthRoutes = () => {
+export const AuthRoute = () => {
 	return (
 		<Routes>
 			<Route path="register" element={<Register />} />

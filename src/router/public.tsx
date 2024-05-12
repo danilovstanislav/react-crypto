@@ -1,13 +1,15 @@
-import { AuthRoutes } from './routes/Auth'
-import { Home } from './routes/Home'
+import { HomeRoute } from './routes/Home'
+import { lazyImport } from '../utils/lazyImport'
+
+const { AuthRoute } = lazyImport(() => import('./routes/Auth'), 'AuthRoute')
 
 export const publicRoutes = [
 	{
 		path: '/',
-		element: <Home />,
+		element: <HomeRoute />,
 	},
 	{
 		path: '/auth/*',
-		element: <AuthRoutes />,
+		element: <AuthRoute />,
 	},
 ]
