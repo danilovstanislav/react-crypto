@@ -30,7 +30,11 @@ export const Input = ({
 			<input
 				type={type}
 				placeholder={placeholder}
-				className={cn('w-full appearance-none border-2 border-gray-300 rounded-md', sizes[size])}
+				className={cn(
+					'w-full appearance-none border-2 border-gray-300 rounded-md',
+					sizes[size],
+					error && 'border-red-500',
+				)}
 				{...registration}
 			/>
 		</FieldWrapper>
