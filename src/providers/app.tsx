@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ReactNode, Suspense } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 
 type AppProviderProps = {
@@ -6,5 +6,9 @@ type AppProviderProps = {
 }
 
 export const AppProvider = ({ children }: AppProviderProps) => {
-	return <BrowserRouter>{children}</BrowserRouter>
+	return (
+		<Suspense>
+			<BrowserRouter>{children}</BrowserRouter>
+		</Suspense>
+	)
 }

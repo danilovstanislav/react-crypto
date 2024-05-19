@@ -18,7 +18,7 @@ export const FieldWrapper = (props: FieldWrapperProps) => {
 		<label className={cn('block', className)}>
 			{label}
 			<div className="mt-1">{children}</div>
-			{error && <div className="text-sm">{error?.message}</div>}
+			{error && <div className="text-sm text-red-500">{error?.message}</div>}
 		</label>
 	)
 }

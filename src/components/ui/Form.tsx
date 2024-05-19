@@ -1,31 +1,42 @@
+import { cn } from '@/utils/tailwind-merge'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { ReactNode } from 'react'
-import { SubmitHandler, UseFormReturn, useForm } from 'react-hook-form'
-import { ZodType, ZodTypeDef } from 'zod'
+import {
+	FieldValues,
+	FormProvider,
+	SubmitHandler,
+	UseFormProps,
+	UseFormReturn,
+	useForm,
+} from 'react-hook-form'
+import { ZodType, z } from 'zod'
 
-type FormProps<FormValues extends Record<string, unknown>, Schema> = {
-	className?: string
-	children: (methods: UseFormReturn<FormValues>) => ReactNode
-	onSubmit: SubmitHandler<FormValues>
+type FormProps<TFormValues extends FieldValues, Schema> = {
+	onSubmit: SubmitHandler<TFormValues>
 	schema: Schema
+	className?: string
+	children: (methods: UseFormReturn<TFormValues>) => ReactNode
+	options?: UseFormProps<TFormValues>
+	id?: string
 }
 
 export const Form = <
-	FormValues extends Record<string, unknown> = Record<string, unknown>,
-	Schema extends ZodType<unknown, ZodTypeDef, unknown> = ZodType<unknown, ZodTypeDef, unknown>,
+	Schema extends ZodType<any, any, any>,
+	TFormValues extends FieldValues = z.infer<Schema>,
 >({
-	className,
-	children,
 	onSubmit,
+	children,
+	className,
+	options,
+	id,
 	schema,
-}: FormProps<FormValues, Schema>) => {
-	const methods = useForm<FormValues>({
-		resolver: schema && zodResolver(schema),
-	})
-
+}: FormProps<TFormValues, Schema>) => {
+	const form = useForm({ ...options, resolver: zodResolver(schema) })
 	return (
-		<form onSubmit={methods.handleSubmit(onSubmit)} className={className}>
-			{children(methods)}
-		</form>
+		<FormProvider {...form}>
+			<form className={cn('space-y-6', className)} onSubmit={form.handleSubmit(onSubmit)} id={id}>
+				{children(form)}
+			</form>
+		</FormProvider>
 	)
 }
