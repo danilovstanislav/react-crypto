@@ -1,7 +1,7 @@
+import { Input, Button, Form } from '@/components/ui'
+import { RegisterDTO } from '@/types'
 import { z } from 'zod'
-import { Input, Form, Button } from '../../shared/ui'
-import { register } from '../../lib/auth'
-import { RegisterDTO } from '../../types'
+import { register } from '../api/register'
 
 type RegisterFormProps = {
 	onSuccess?: () => void
@@ -15,7 +15,7 @@ const schema = z.object({
 	lastName: z.string().min(1),
 })
 
-export const Register = ({ onSuccess, onError }: RegisterFormProps) => {
+export const RegisterForm = ({ onSuccess, onError }: RegisterFormProps) => {
 	const onSubmit = async (values: RegisterDTO) => {
 		try {
 			await register(values)

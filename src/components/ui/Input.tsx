@@ -1,6 +1,6 @@
 import { UseFormRegisterReturn } from 'react-hook-form'
 import { FieldWrapper, FieldWrapperPassThroughProps } from './FieldWrapper'
-import { cn } from '../lib/tailwind-merge'
+import { cn } from '../../utils/tailwind-merge'
 
 const sizes = {
 	sm: 'py-2 px-2 text-sm',

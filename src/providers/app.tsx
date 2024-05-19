@@ -1,10 +1,10 @@
 import { ReactNode } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 
-type TAppProvider = {
+type AppProviderProps = {
 	children: ReactNode
 }
 
-export const AppProvider = ({ children }: TAppProvider) => {
+export const AppProvider = ({ children }: AppProviderProps) => {
 	return <BrowserRouter>{children}</BrowserRouter>
 }

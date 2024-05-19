@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import { FieldError } from 'react-hook-form'
-import { cn } from '../lib/tailwind-merge'
+import { cn } from '../../utils/tailwind-merge'
 
 type FieldWrapperProps = {
 	children: ReactNode

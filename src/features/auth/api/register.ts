@@ -1,4 +1,4 @@
-import { RegisterDTO } from '../types'
+import { RegisterDTO } from '../../../types'
 
 export function register(data: RegisterDTO): Promise<boolean> {
 	const { email, password, firstName, lastName } = data

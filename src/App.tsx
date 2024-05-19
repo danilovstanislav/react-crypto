@@ -1,8 +1,7 @@
-import { FC } from 'react'
-import { AppRoutes } from './router'
-import { AppProvider } from './providers/app'
+import { AppProvider } from '@/providers'
+import { AppRoutes } from '@/routes'
 
-export const App: FC = () => {
+export const App = () => {
 	return (
 		<AppProvider>
 			<AppRoutes />

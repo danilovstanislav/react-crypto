@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes } from 'react'
 import { Spinner } from './Spinner'
-import { cn } from '../lib/tailwind-merge'
+import { cn } from '../../utils/tailwind-merge'
 
 const sizes = {
 	sm: 'py-2 px-2 text-sm',

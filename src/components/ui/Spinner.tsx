@@ -1,4 +1,4 @@
-import { cn } from '../lib/tailwind-merge'
+import { cn } from '../../utils/tailwind-merge'
 
 const sizes = {
 	sm: 'h-4 w-4',
