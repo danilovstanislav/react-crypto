@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { Input, Form } from '../form'
+import { Input, Form, Button } from '../../shared/ui'
 import { register } from '../../lib/auth'
 import { RegisterDTO } from '../../types'
 
@@ -28,37 +28,46 @@ export const Register = ({ onSuccess, onError }: RegisterFormProps) => {
 	}
 
 	return (
-		<div className="w-100 h-screen">
-			<Form<RegisterDTO, typeof schema> schema={schema} onSubmit={onSubmit}>
+		<div className="w-100 min-h-screen p-4 flex items-center justify-center">
+			<Form<RegisterDTO, typeof schema>
+				className="py-4 px-6 flex flex-col max-w-96 w-full bg-white rounded-lg shadow-lg"
+				schema={schema}
+				onSubmit={onSubmit}
+			>
 				{({ register, formState }) => (
 					<>
+						<h1 className="text-2xl font-bold mb-4 text-center">Register</h1>
 						<Input
-							placeholder="Email"
+							label="Email"
+							placeholder="example@gmail.com"
 							type="email"
-							className="mb-2"
+							className="mb-3"
 							error={formState.errors.email}
 							registration={register('email')}
 						/>
 						<Input
+							label="Password"
 							placeholder="Password"
 							type="password"
-							className="mb-2"
+							className="mb-3"
 							error={formState.errors.password}
 							registration={register('password')}
 						/>
 						<Input
-							placeholder="First name"
-							className="mb-2"
+							label="First name"
+							placeholder="John"
+							className="mb-3"
 							error={formState.errors.firstName}
 							registration={register('firstName')}
 						/>
 						<Input
-							placeholder="Last name"
-							className="mb-2"
+							label="Last name"
+							placeholder="Doe"
+							className="mb-6"
 							error={formState.errors.lastName}
 							registration={register('lastName')}
 						/>
-						<button type="submit">Submit</button>
+						<Button type="submit">Submit</Button>
 					</>
 				)}
 			</Form>
